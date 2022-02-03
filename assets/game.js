@@ -56,13 +56,17 @@ function checkAnswer() {
 }
 
 function nextLevel() {
-    // to be developed
     let currentLeft = parseInt(game.leftNumber);
     let currentRight = parseInt(game.rightNumber);
     let currentLevel = parseInt(game.level);
 
     const options = ['incrementLeft', 'incrementRight'];
     const choice = options[Math.floor(Math.random() * options.length)]; // Random choice
+
+    // update history
+    document.querySelector("#prev-left-number").innerText = game.leftNumber;
+    document.querySelector("#prev-right-number").innerText = game.rightNumber;
+    document.querySelector("#prev-answer").innerText = (currentLeft*currentRight).toString();
     
     if (choice === 'incrementLeft') {
         currentLeft++;
