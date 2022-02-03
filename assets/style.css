@@ -1,0 +1,95 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+.flex-container-column {
+	display: flex;
+	flex-direction: column;
+
+	max-width: 500px;
+	margin: 30px 20px 0 20px;
+	text-align: right;
+}
+
+.flex-container-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#left-number,
+#right-number,
+.operator {
+	flex-basis: 25%;
+}
+
+#prev-left-number,
+#prev-right-number,
+#prev-answer,
+.prev-operator {
+	flex-basis: 20%;
+}
+
+.button {
+	flex-basis: 34%;
+
+	font-size: 1em;
+	text-align: center;
+	padding: 15px;
+	border: 1px solid black;
+	background: -webkit-linear-gradient(top, #d2d2d2, #ddd);
+	cursor: pointer;
+}
+
+.button:hover {
+	font-weight: bold;
+}
+
+.double {
+	flex-basis: 50%;
+}
+
+.display {
+	color: white;
+	width: 100%;
+	padding: 5px 10px;
+	background-color: #111111;
+	border: 1px solid black;
+	font-size: 1em;
+}
+
+.clear {
+	background: #ff5555;
+}
+
+.enter {
+	background: #55ff55;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 30px;
+	margin: 20px;
+}
+
+@media screen and (max-width: 513px) {
+   .button {
+       padding: 10px;
+   }
+
+   .main-container {
+		display: flex;
+		flex-direction: column;
+		flex-basis: 100%;
+	}
+}

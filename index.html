@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Perkalian Game!</title>
+	<link rel="stylesheet" href="assets/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="flex-container-column card">
+            <div class="title-message"><h3>Ayo hitung hasil perkalian ini!</h3></div>
+    
+            <div class="flex-container-row">
+                <div><h2 id="left-number">1</h2></div>
+                <div><h2 class="operator">x</h2></div>
+                <div><h2 id="right-number">1</h2></div>
+                <div><h2 id="right-number">=</h2></div>
+            </div>
+            <div class="display">
+                <h1 id="answer">0</h1>
+            </div>
+            <div class="flex-container-row">
+                <div class="button">7</div>
+                <div class="button">8</div>
+                <div class="button">9</div>
+            </div>
+            <div class="flex-container-row">
+                <div class="button">4</div>
+                <div class="button">5</div>
+                <div class="button">6</div>
+            </div>
+            <div class="flex-container-row">
+                <div class="button">1</div>
+                <div class="button">2</div>
+                <div class="button">3</div>
+            </div>
+            <div class="flex-container-row">
+                <div class="button clear">Hapus</div>
+                <div class="button">0</div>
+                <div class="button enter">Enter</div>
+            </div>
+        </div>
+        
+        <div class="flex-container-column">
+            <div class="flex-container-column card">
+                <div class="title-message"><h3>Perhitungan terakhir:</h3></div>
+                <div class="flex-container-row">
+                    <h2 id="prev-left-number">1</h2>
+                    <h2 class="prev-operator">x</h2>
+                    <h2 id="prev-right-number">2</h2>
+                    <h2 class="prev-operator">=</h2>
+                    <h2 id="prev-answer">2</h2>
+                </div>
+            </div>
+            <div class="flex-container-column card">
+                <div class="title-message"><h3>Level: <span id="level">1</span></h3>
+                <div class="title-message"><h3>Sisa nyawa: <span id="lives">3</span></h3>
+            </div>    
+        </div>
+        
+    </div>
+	
+	<script src="assets/game.js"></script>
+	<script src="assets/kalkulator.js"></script>
+</body>
+
+</html>
