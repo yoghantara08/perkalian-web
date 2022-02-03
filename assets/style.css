@@ -4,6 +4,37 @@
 
 body {
 	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	padding: 5px;
+	background-color: #111111;
+	color: white;
+}
+
+
+nav li {
+	display: inline;
+	list-style-type: none;
+	margin-right: 20px;
+}
+
+nav {
+	position: sticky;
+	top: 0;
+}
+
+nav a {
+	font-size: 18px;
+	font-weight: 400;
+	text-decoration: none;
+	color: white;
+}
+
+nav a:hover {
+	font-weight: bold;
 }
 
 .flex-container-column {
@@ -80,6 +111,14 @@ body {
 	border-radius: 5px;
 	padding: 30px;
 	margin: 20px;
+}
+
+footer {
+	padding: 5px;
+	color: white;
+	background-color: #111111;
+	font-weight: bold;
+	padding-left: 20px;
 }
 
 @media screen and (max-width: 513px) {
