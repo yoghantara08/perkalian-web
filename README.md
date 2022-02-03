@@ -36,3 +36,7 @@ Soal selanjutnya, misalnya **3x5** sama saja dengan 3+3+3+3+**3** (3-nya jadi 5 
 Apabila soal selanjutnya adalah **4x4** maka itu sama saja dengan 4+4+4+**4** (4-nya jadi 4 kali). Karena kita sudah tahu bahwa bahwa 3x4=4+4+4=12 maka kita cukup jumlahkan 12 dengan 4 terakhir, sehingga **4+4+4+4=12+4=16**.
 
 Dengan demikian, untuk soal dengan bilangan yang lebih besar, soal perkalian dapat diselesaikan lebih cepat ketimbang melakukan operasi perkalian bersusun panjang atau pendek sekalipun.
+
+Manfaat game ini bagi pemain/peserta didik adalah penguasaan konsep perkalian sebagai penjumlahan berulang. Game ini memungkinkan pemainnya untuk menerapkan *deliberate practice* dan setelah beberapa permainan secara rutin, pemain dapat 'menghafalkan' perkalian bilangan kecil secara automatis dan mematangkan ketelitian dalam melakukan operasi penjumlahan.
+
+Dalam mendampingi pemain, instruktor dapat menyiapkan kertas dan pensil untuk pemain dapat melakukan operasi penjumlahan bersusun.
