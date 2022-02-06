@@ -13,6 +13,7 @@ function initLevel() {
   game.rightNumber = "1";
   game.level = "1";
   game.lives = "3";
+  game.highscore = localStorage.getItem("highScore");
 }
 
 function checkAnswer() {
@@ -109,15 +110,11 @@ function inputDigit(digit) {
 function highscoreHandler() {
   if (parseInt(game.level) > parseInt(game.highscore))
     localStorage.setItem("highScore", game.level);
+  game.highscore = game.level;
 }
 
 function highscoreUpdate() {
-  // If the highscore isn't initialized yet
-  if (!localStorage.getItem("highScore")) {
-    document.querySelector("#highest-score").innerText = "0";
-  } else {
-    document.querySelector("#highest-score").innerText = game.highscore;
-  }
+  document.querySelector("#highest-score").innerText = game.highscore;
 }
 
 function showHighscoreFirst() {
