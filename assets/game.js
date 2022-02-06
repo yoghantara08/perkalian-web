@@ -4,6 +4,7 @@ const game = {
   rightNumber: "1",
   level: "1",
   lives: "3",
+  highscore: localStorage.getItem("highScore"),
 };
 
 function initLevel() {
@@ -49,6 +50,8 @@ function checkAnswer() {
   if (currentLives <= 0) {
     // initLevel
     alert("Yah, permainan berakhir!");
+    highscoreHandler();
+    highscoreUpdate();
     initLevel();
   } else {
     // next level
@@ -103,6 +106,30 @@ function inputDigit(digit) {
   }
 }
 
+function highscoreHandler() {
+  if (parseInt(game.level) > parseInt(game.highscore))
+    localStorage.setItem("highScore", game.level);
+}
+
+function highscoreUpdate() {
+  // If the highscore isn't initialized yet
+  if (!localStorage.getItem("highScore")) {
+    document.querySelector("#highest-score").innerText = "0";
+  } else {
+    document.querySelector("#highest-score").innerText = game.highscore;
+  }
+}
+
+function showHighscoreFirst() {
+  window.onload = () => {
+    // If the highscore isn't initialized yet
+    if (!localStorage.getItem("highScore")) {
+      localStorage.setItem("highScore", "0");
+    }
+    document.querySelector("#highest-score").innerText = game.highscore;
+  };
+}
+
 const buttons = document.querySelectorAll(".button");
 for (let button of buttons) {
   button.addEventListener("click", function (event) {
@@ -125,3 +152,5 @@ for (let button of buttons) {
     updateDisplay();
   });
 }
+
+showHighscoreFirst();
