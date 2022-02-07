@@ -108,9 +108,10 @@ function inputDigit(digit) {
 }
 
 function highscoreHandler() {
-  if (parseInt(game.level) > parseInt(game.highscore))
+  if (parseInt(game.level) > parseInt(game.highscore)){
     localStorage.setItem("highScore", game.level);
-  game.highscore = game.level;
+    game.highscore = game.level;
+  }
 }
 
 function highscoreUpdate() {
