@@ -36,7 +36,8 @@ function checkAnswer() {
     alert(message);
   } else {
     // False answer
-    decrementLives();
+    currentLives--;
+    game.lives = currentLives.toString();
 
     message += "Yah! Sayang sekali jawabanmu salah, yang benar: ";
     message += left.toString();
@@ -49,7 +50,10 @@ function checkAnswer() {
 
   if (currentLives <= 0) {
     // initLevel
-    livesOutHandler();
+    alert("Yah, permainan berakhir!");
+    highscoreHandler();
+    highscoreUpdate();
+    initLevel();
   } else {
     // next level
     nextLevel();
@@ -57,11 +61,9 @@ function checkAnswer() {
 }
 
 function nextLevel() {
-  // Activate and reset the timer
-  timer();
-
   let currentLeft = parseInt(game.leftNumber);
   let currentRight = parseInt(game.rightNumber);
+  let currentLevel = parseInt(game.level);
 
   const options = ["incrementLeft", "incrementRight"];
   const choice = options[Math.floor(Math.random() * options.length)]; // Random choice
@@ -81,7 +83,8 @@ function nextLevel() {
     game.rightNumber = currentRight.toString();
   }
 
-  incrementLevel();
+  currentLevel++;
+  game.level = currentLevel.toString();
 }
 
 function clearDisplay() {
@@ -105,10 +108,9 @@ function inputDigit(digit) {
 }
 
 function highscoreHandler() {
-  if (parseInt(game.level) > parseInt(game.highscore)) {
+  if (parseInt(game.level) > parseInt(game.highscore))
     localStorage.setItem("highScore", game.level);
-    game.highscore = game.level;
-  }
+  game.highscore = game.level;
 }
 
 function highscoreUpdate() {
@@ -122,60 +124,7 @@ function showHighscoreFirst() {
       localStorage.setItem("highScore", "0");
     }
     document.querySelector("#highest-score").innerText = game.highscore;
-
-    // Mulai timer
-    timer();
   };
-}
-
-function timer() {
-  let timeLimit = 5;
-  // Update the count down every 1 second
-  let x = setInterval(function () {
-    // Display the result in the element with id="demo"
-    if (timeLimit >= 0) document.getElementById("timer").innerHTML = timeLimit + "s";
-
-    // If the count down is finished, write some text
-    if (timeLimit < 0) {
-      timeOutHandler(x);
-    }
-    timeLimit--;
-  }, 1000);
-}
-
-function timeOutHandler(x) {
-  alert("Waktu telah habis, level Anda akan naik dan nyawa Anda akan dikurangi 1");
-  clearInterval(x);
-  nextLevel();
-  decrementLives();
-  if (game.lives <= 0) {
-    alert("Yah, permainan berakhir!");
-    highscoreHandler();
-    highscoreUpdate();
-    initLevel();
-  }
-  clearDisplay();
-  updateDisplay();
-}
-
-function livesOutHandler() {
-  alert("Yah, permainan berakhir!");
-  highscoreHandler();
-  highscoreUpdate();
-  initLevel();
-}
-
-function decrementLives() {
-  // Decrement lives
-  let tempLives = parseInt(game.lives);
-  tempLives--;
-  game.lives = tempLives.toString();
-}
-
-function incrementLevel() {
-  let tempLevel = parseInt(game.level);
-  tempLevel++;
-  game.level = tempLevel.toString();
 }
 
 const buttons = document.querySelectorAll(".button");
