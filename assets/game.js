@@ -69,9 +69,7 @@ function nextLevel() {
   // update history
   document.querySelector("#prev-left-number").innerText = game.leftNumber;
   document.querySelector("#prev-right-number").innerText = game.rightNumber;
-  document.querySelector("#prev-answer").innerText = (
-    currentLeft * currentRight
-  ).toString();
+  document.querySelector("#prev-answer").innerText = (currentLeft * currentRight).toString();
 
   if (choice === "incrementLeft") {
     currentLeft++;
@@ -122,11 +120,22 @@ function showHighscoreFirst() {
       localStorage.setItem("highScore", "0");
     }
     document.querySelector("#highest-score").innerText = game.highscore;
-
-    // Mulai timer
-    timer();
   };
 }
+
+// Start Button
+const startButton = document.querySelector(".start-button");
+startButton.addEventListener("click", function () {
+  const main = document.querySelector(".main-container");
+
+  setTimeout(() => {
+    main.innerHTML = mainContainer();
+
+    timer();
+    showHighscoreFirst();
+    tombol();
+  }, 1000);
+});
 
 function timer() {
   let timeLimit = 5;
@@ -178,27 +187,103 @@ function incrementLevel() {
   game.level = tempLevel.toString();
 }
 
-const buttons = document.querySelectorAll(".button");
-for (let button of buttons) {
-  button.addEventListener("click", function (event) {
-    const target = event.target;
+function tombol() {
+  const buttons = document.querySelectorAll(".button");
+  for (let button of buttons) {
+    button.addEventListener("click", function (event) {
+      const target = event.target;
 
-    if (target.classList.contains("clear")) {
-      clearDisplay();
+      if (target.classList.contains("clear")) {
+        clearDisplay();
+        updateDisplay();
+        return;
+      }
+
+      if (target.classList.contains("enter")) {
+        checkAnswer();
+        clearDisplay();
+        updateDisplay();
+        return;
+      }
+
+      inputDigit(target.innerText);
       updateDisplay();
-      return;
-    }
-
-    if (target.classList.contains("enter")) {
-      checkAnswer();
-      clearDisplay();
-      updateDisplay();
-      return;
-    }
-
-    inputDigit(target.innerText);
-    updateDisplay();
-  });
+    });
+  }
+  return;
 }
 
-showHighscoreFirst();
+function mainContainer() {
+  return `<div class="flex-container-column card">
+            ${showCalculator()}
+            ${showTimer()}
+            ${showScore()}
+          </div>`;
+}
+
+function showCalculator() {
+  return `<div class="title-message"><h3>Ayo hitung hasil perkalian ini!</h3></div>
+
+          <div class="flex-container-row">
+            <h2 id="left-number">1</h2>
+            <h2 class="operator">x</h2>
+            <h2 id="right-number">1</h2>
+            <h2 id="right-number">=</h2>
+          </div>
+          <div class="display">
+            <h1 id="answer">0</h1>
+          </div>
+          <div class="flex-container-row">
+            <div class="button">7</div>
+            <div class="button">8</div>
+            <div class="button">9</div>
+          </div>
+          <div class="flex-container-row">
+            <div class="button">4</div>
+            <div class="button">5</div>
+            <div class="button">6</div>
+          </div>
+          <div class="flex-container-row">
+            <div class="button">1</div>
+            <div class="button">2</div>
+            <div class="button">3</div>
+          </div>
+          <div class="flex-container-row">
+            <div class="button clear">Hapus</div>
+            <div class="button">0</div>
+            <div class="button enter">Enter</div>
+          </div>
+        </div>`;
+}
+
+function showTimer() {
+  return `<div class="flex-container-column">
+            <div class="flex-container-column card">
+              <div class="title-message" style="text-align: center">
+                <h3 style="color: red">Sisa Waktu:</h3>
+                <h3 style="color: red" id="timer">5<span>s</span></h3>
+                <h3>Perhitungan terakhir:</h3>
+              </div>
+              <div class="flex-container-row">
+                <h2 id="prev-left-number">...</h2>
+                <h2 class="prev-operator">x</h2>
+                <h2 id="prev-right-number">...</h2>
+                <h2 class="prev-operator">=</h2>
+                <h2 id="prev-answer">...</h2>
+              </div>
+            </div>`;
+}
+
+function showScore() {
+  return `<div class="flex-container-column card">
+            <div class="title-message">
+              <h3 style="color: blue">Skor tertinggi: <span id="highest-score">0</span></h3>
+            </div>
+            <div class="title-message">
+              <h3>Level: <span id="level">1</span></h3>
+            </div>
+            <div class="title-message">
+              <h3>Sisa nyawa: <span id="lives">3</span></h3>
+            </div>
+          </div>`;
+}
